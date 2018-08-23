@@ -1,0 +1,19 @@
+.article {
+    background-color: #1f1f20;
+    color: #eea;
+    padding: 5vh 10vh;
+    width: 80%;
+    float: right;
+}
+
+.seeArticle{
+    min-width: 50px;
+    min-height: 25px;
+    border-radius: 7%;
+
+}
+
+.seeArticle:hover{
+    background-color: #79b1bb;
+    cursor: pointer;
+}

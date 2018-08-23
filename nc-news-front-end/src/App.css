@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+}
+
+.App-title {
+  font-size: 1.5em;
+  height: 5vh;
+  background-color: #50475f;
+  margin: 0 auto;
+  padding:2.5vh;
+}
+
+header {
+  background-color: #426694;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+nav {
+  padding: 5vh 2vw;
+  background-color: #555;
+  color: #eea;
+  height: 75vh; 
+}
+
+.selected{
+  background-color: rgba(168, 75, 103, 0.815);
+  color: #eea;
+}
+
+/* rgba not working properly for seected, showing at full alpha when it should be .4 */
