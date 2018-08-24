@@ -16,6 +16,7 @@ class Topics extends Component {
             </ul>
         );
     }
+
     componentDidMount() {
         this.getAllTopics();
     }

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import * as api from '../api';
+import PostComment from './PostComment';
 import './Article.css';
 
 class Article extends Component {
@@ -16,7 +17,7 @@ class Article extends Component {
                     this.state.article.title &&
                     <Fragment>
                         <h3>{this.state.article.title}</h3>
-                        <p>{`${this.state.article.body.slice(0, 100)}...`}</p>
+                        <p>{this.state.article.body}</p>
                         <p>Created at: {`${this.state.article.created_at.slice(11, 16)}  ${this.state.article.created_at.slice(8, 10)}-${this.state.article.created_at.slice(5, 7)}-${this.state.article.created_at.slice(0, 4)}`}</p>
                         <div>
                             <button value='+'> + </button>
@@ -27,15 +28,29 @@ class Article extends Component {
                         </div>
                         <p>Tagged in: <Link to={`/topics/${this.state.article.belongs_to}/articles`}>{this.state.article.belongs_to}</Link></p>
                         <p>Comments: WORK IN PROGRESS</p>
-                        <Link to={`/articles/${this.state.article._id}/comments`}><button className="seeComments"
-                            onClick={() => this.getCommentsByArticleId(this.props.match.params.article_id)}>See Comments</button></Link>
+                        <PostComment id={this.state.article._id} />
+                        {this.state.comments.length === 0 && <Link to={`/articles/${this.state.article._id}/comments`}><button className="seeComments"
+                            onClick={() => this.getCommentsByArticleId(this.props.match.params.article_id)}>See Comments</button></Link>}
                     </Fragment>
                 }
                 {this.state.comments.length > 0 && <div className="comments">
                     {[...this.state.comments].map(comment => {
                         return (
-                            < Fragment >
-                                <p>{comment.body}</p>
+                            <Fragment key="comment._id">
+                                <div className="comment-user">
+                                    <p>Created by:<Link to="a">{comment.created_by}</Link></p>
+                                    {/* insert user picture when we get users? + UPDATE -> USER WILL BE OBJ */}
+                                    <p>Created at: {`${comment.created_at.slice(11, 16)}  ${comment.created_at.slice(8, 10)}-${comment.created_at.slice(5, 7)}-${comment.created_at.slice(0, 4)}`}</p>
+                                </div>
+                                <div className="comment-body">
+                                    <p>{comment.body}</p>
+                                    <button value='+'> + </button>
+                                    {'   '}
+                                    {comment.votes}
+                                    {'   '}
+                                    <button value='-'> - </button>
+                                </div>
+                                <hr />
                             </Fragment>
                         )
                     })}
@@ -84,14 +99,14 @@ class Article extends Component {
         api.getCommentsByArticleId(params)
             .then(res => {
                 this.setState({
-                    comments: { ...res.data.comments }
+                    comments: res.data.comments
                 })
             })
     }
 }
 
-//COMENTS NOT RENDERING ON SCREEN YET!
+//find a way to display comments after posting one
 
-//post article f?
+//delete a comment
 
 export default Article;

@@ -1,13 +1,11 @@
 //packages
 import React, { Component } from 'react';
-import { Route, Link, NavLink } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 //styles & extra js
-import * as api from './api';
 import './App.css';
 //components
 import Article from './components/Article';
 import Topics from './components/Topics';
-import Comments from './components/Comments';
 import LogIn from './components/LogIn';
 import Articles from './components/Articles';
 
@@ -46,7 +44,7 @@ class App extends Component {
     );
   }
   componentDidMount = () => {
-    console.log('angry birds')
+    console.log('App js angry birds')
   };
 }
 

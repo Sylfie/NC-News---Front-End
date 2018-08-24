@@ -1,0 +1,15 @@
+.post-comment {
+    background-color: rgba(48, 80, 69, 0.801);
+    margin: 1vh;
+}
+
+textarea {
+    box-sizing: border-box;
+    width: 50vw;
+    height: 20vh;
+}
+
+.submit-comment {
+    width: 50px;
+    margin-bottom: 2vh;
+}

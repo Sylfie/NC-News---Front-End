@@ -1,4 +1,9 @@
 .comments {
-    background-color: #774677;
+    background-color: rgba(129, 102, 129, 0.576);
     color: #eea;
+    padding: 0.5vh 0.5vw;
+}
+
+.comment-user{
+    margin: 2px auto;
 }
