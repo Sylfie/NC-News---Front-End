@@ -39,3 +39,18 @@ Add classNames
 Create and .css files
 Write application CSS - sitewide styling choices like fonts, colour pallettes
 Write component specific CSS
+
+POST /api/topics/:topic_slug/articles
+Add a new article to a topic. This route requires a JSON body with a title and body key/value pairs 
+e.g: {"title": "This is a new rticle", "body": "I am a very lond article."
+
+PUT /api/articles/:article_id
+Increment or Decrement the votes of an article by one. This route requires a vote query of 'up' or 'down' 
+e.g: https://ncnewsbend.herokuapp.com/api/articles/:article_id?vote=up
+
+PUT /api/comments/:comment_id
+Increment or Decrement the votes of a comment by one. This route requires a vote query of 'up' or 'down' 
+e.g: https://ncnewsbend.herokuapp.com/api/comments/:comment_id?vote=down
+
+GET /api/users/:username
+Returns a JSON object with the profile data for the specified user.

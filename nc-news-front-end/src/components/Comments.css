@@ -7,3 +7,7 @@
 .comment-user{
     margin: 2px auto;
 }
+
+.disabled {
+    pointer-events: none;
+}

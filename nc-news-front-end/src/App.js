@@ -1,6 +1,6 @@
 //packages
 import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 //styles & extra js
 import './App.css';
 //components
@@ -36,8 +36,8 @@ class App extends Component {
           <Route exact path="/" render={() => <div>Home</div>} />
           <Route exact path="/topics" component={Topics} />
           <Route exact path="/articles" component={Articles} />
-          <Route path="/articles/:article_id" component={Article} />
-          {/* <Route path="/articles/:article_id" component={Comments} /> */}
+          <Route exact path="/error" component={Error} />
+          <Route path="/articles/:article_id" render={(props) => <Article {...props} activeUser={this.state.activeUser} />} />
           <Route path="/topics/:topic_slug/articles" component={Articles} />
         </main>
       </div>

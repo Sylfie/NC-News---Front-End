@@ -33,7 +33,6 @@ class PostComment extends Component {
 
     handleSubmit = (event) => {
         const comment = this.state.comment;
-        console.log(comment)
         event.preventDefault();
         api.postCommentByArticleId(this.props.id, comment)
             .then(res => {
@@ -43,13 +42,15 @@ class PostComment extends Component {
                         body: ''
                     }
                 })
-
+                this.props.activateComments();
             })
             .catch(console.log)
     }
 
 
 }
+
+//comments on line 45 need a function to update commnets components
 
 export default PostComment;
 

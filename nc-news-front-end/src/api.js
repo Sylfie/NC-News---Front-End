@@ -27,11 +27,24 @@ export const postCommentByArticleId = (article_id, commentObj) => {
     return axios.post(`${URL}/articles/${article_id}/comments`, commentObj)
 }
 
+export const deleteComment = (comment_id) => {
+    return axios.delete(`${URL}/comments/${comment_id}`)
+}
 
+export const updateVoteByArticleId = (article_id, choice) => {
+    return axios.put(`${URL}/articles/${article_id}?vote=${choice}`)
+}
 
+export const updateVoteByCommentId = (comment_id, choice) => {
+    return axios.put(`${URL}/comments/${comment_id}?vote=${choice}`)
+}
 
 //.catch and then invoke an api function that takes to an error page
 //error page with conditional rendering based on err response
+
+
+
+
 
 // export const getArticles = async () => {
 //     try {

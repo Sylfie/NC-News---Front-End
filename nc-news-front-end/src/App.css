@@ -30,4 +30,26 @@ nav {
   color: #eea;
 }
 
+
+.vote-up {
+  background-color: #67e65c;
+}
+
+.vote-down {
+  background-color: #c06a5f;
+}
+
+.vote-up, .vote-down {
+  min-width: 50px;
+  min-height: 25px;
+  font-size: 1.2em;
+  border-radius: 15%;
+  border-color: none;
+  margin: auto 1vw;
+}
+
+.vote-up:hover, .vote-down:hover {
+  cursor: pointer;
+}
+
 /* rgba not working properly for seected, showing at full alpha when it should be .4 */
