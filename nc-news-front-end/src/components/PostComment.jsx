@@ -50,10 +50,10 @@ class PostComment extends Component {
 
 }
 
-//comments on line 45 need a function to update commnets components
 
 export default PostComment;
 
 //created_by to be changed with checked active user from app
 
 //comment max length to be considered as a feature
+

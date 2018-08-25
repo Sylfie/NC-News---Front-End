@@ -13,7 +13,7 @@ class Comments extends Component {
             <div>
                 <PostComment id={this.props.id} updateComments={this.updateComments} activateComments={this.activateComments} />
                 {!this.state.commentsActive && <Link to={`/articles/${this.props.id}/comments`}><button className="seeComments"
-                    onClick={() => this.getCommentsByArticleId(this.props.id)}>See Comments</button></Link>}
+                    onClick={this.activateComments}>See Comments</button></Link>}
                 {this.state.comments.length > 0 && <div className="comments">
                     {[...this.state.comments].map(comment => {
                         return (
@@ -41,6 +41,12 @@ class Comments extends Component {
         );
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.state.commentsActive && this.state.comments.length === 0) {
+            this.getCommentsByArticleId(this.props.id)
+        };
+    }
+
     getCommentsByArticleId = (params) => {
         api.getCommentsByArticleId(params)
             .then(res => {
@@ -51,11 +57,6 @@ class Comments extends Component {
             })
     }
 
-    updateComments = (comment) => {
-        this.setState({
-            comments: [...this.state.comments, comment]
-        })
-    }
     deleteComment = (params) => {
         api.deleteComment(params)
             .then(res => {
@@ -73,7 +74,7 @@ class Comments extends Component {
     }
 
     activateComments = () => {
-        console.log('propify me!')
+        console.log('SEE ME')
         this.setState({
             ...this.state,
             commentsActive: true
@@ -81,10 +82,7 @@ class Comments extends Component {
     }
 }
 
-//post comment to trigger comments to display
 
 //deleted comment to disappear
-
-//find a way to display comments after posting one
 
 export default Comments;
