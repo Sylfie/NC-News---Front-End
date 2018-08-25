@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 import * as api from '../api';
 
 
@@ -7,19 +8,21 @@ class postArticle extends Component {
         newArticle: {
             title: "",
             body: "",
-            created_by: "5b64816a0318403e159e7dbd"
+            created_by: "5b64816a0318403e159e7db"
         },
-        topic: ''
+        topic: '',
+        error: {}
     }
     render() {
         return (
             <div className="post-article">
+                {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
                 <form onSubmit={this.handleSubmit}>
                     <Fragment>
                         <label>
                             Topic: {' '}
                             {this.props.topic_slug ? <span>{this.props.topic_slug}</span> : <select onChange={this.handleOptions}>
-                                <option value="">Choose a topic</option>
+                                <option value="" defaultValue>Choose a topic</option>
                                 <option value="coding">Coding</option>
                                 <option value="football">Football</option>
                                 <option value="cooking">Cooking</option>
@@ -28,7 +31,7 @@ class postArticle extends Component {
                         <br />
                         <br />
                     </Fragment>
-                    <input type="text" name="title" onChange={this.handleChange} />
+                    <input type="text" name="title" value={this.state.newArticle.title} onChange={this.handleChange} />
                     <br />
                     <br />
                     <textarea name="body" value={this.state.newArticle.body} onChange={this.handleChange} placeholder="Put your thoughts in here!"></textarea>
@@ -40,9 +43,9 @@ class postArticle extends Component {
         );
     }
 
-    componenetDidMount() {
-        console.log('trying to post an article!')
-    }
+    // componenetDidMount() {
+    //     console.log('trying to post an article!')
+    // }
 
     handleChange = (event) => {
         this.setState({
@@ -54,7 +57,7 @@ class postArticle extends Component {
     }
 
     checkValidation = () => {
-        return (this.state.newArticle.title && this.state.newArticle.body) ? true : false
+        return (this.state.newArticle.title && this.state.newArticle.body && this.state.topic) ? true : false;
     }
 
     handleSubmit = (event) => {
@@ -69,8 +72,16 @@ class postArticle extends Component {
                         body: ''
                     }
                 })
+                this.props.updateArticles();
             })
-            .catch(console.log)
+            .catch(err => {
+                this.setState({
+                    error: {
+                        code: err.response.status,
+                        message: err.response.data.message
+                    }
+                })
+            })
     }
 
     handleOptions = (event) => {
@@ -86,8 +97,8 @@ export default postArticle;
 
 //successful post, not updating articles when a post is made
 
-//upon submitting, input stays with previous value, it should change back to default, select should go back to default
+ //upon submitting select should go back to default
 
 
-//existing topics are hardcoded, future feature to get all topic slugs as request 
+ //existing topics are hardcoded, future feature to get all topic slugs as request 
 

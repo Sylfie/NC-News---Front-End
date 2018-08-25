@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import * as api from '../api';
 
 
@@ -7,11 +8,13 @@ class PostComment extends Component {
         comment: {
             body: '',
             created_by: "5b64816a0318403e159e7dbd"
-        }
+        },
+        error: {}
     }
     render() {
         return (
-            <div className="post-comment">
+            < div className="post-comment" >
+                {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
                 <form onSubmit={this.handleSubmit}>
                     <textarea name="post-comment" value={this.state.comment.body} onChange={this.handleChange} placeholder="Put your thoughts in here!"></textarea>
                     <br />
@@ -44,7 +47,14 @@ class PostComment extends Component {
                 })
                 this.props.activateComments();
             })
-            .catch(console.log)
+            .catch(err => {
+                this.setState({
+                    error: {
+                        code: err.response.status,
+                        message: err.response.data.message
+                    }
+                })
+            })
     }
 
 

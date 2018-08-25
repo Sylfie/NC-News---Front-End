@@ -1,16 +1,18 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as api from '../api';
 import PostComment from './PostComment';
 
 class Comments extends Component {
     state = {
         comments: [],
-        commentsActive: false
+        commentsActive: false,
+        error: {}
     }
     render() {
         return (
             <div>
+                {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
                 <PostComment id={this.props.id} updateComments={this.updateComments} activateComments={this.activateComments} />
                 {!this.state.commentsActive && <Link to={`/articles/${this.props.id}/comments`}><button className="seeComments"
                     onClick={this.activateComments}>See Comments</button></Link>}
@@ -64,9 +66,15 @@ class Comments extends Component {
                     ...this.state
                 })
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                this.setState({
+                    error: {
+                        code: err.response.status,
+                        message: err.response.data.message
+                    }
+                })
+            })
     }
-
     commentVote = (comment_id, choice) => {
         api.updateVoteByCommentId(comment_id, choice)
             .then(res => console.log(res.data))
@@ -74,7 +82,6 @@ class Comments extends Component {
     }
 
     activateComments = () => {
-        console.log('SEE ME')
         this.setState({
             // ...this.state,
             commentsActive: true
