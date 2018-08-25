@@ -37,6 +37,7 @@ class App extends Component {
           <Route exact path="/topics" component={Topics} />
           <Route exact path="/articles" component={Articles} />
           <Route exact path="/error" component={Error} />
+          {/* <Route exact path="/articles/post_article" /> */}
           <Route path="/articles/:article_id" render={(props) => <Article {...props} activeUser={this.state.activeUser} />} />
           <Route path="/topics/:topic_slug/articles" component={Articles} />
         </main>

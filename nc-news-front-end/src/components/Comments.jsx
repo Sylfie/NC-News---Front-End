@@ -76,7 +76,7 @@ class Comments extends Component {
     activateComments = () => {
         console.log('SEE ME')
         this.setState({
-            ...this.state,
+            // ...this.state,
             commentsActive: true
         })
     }

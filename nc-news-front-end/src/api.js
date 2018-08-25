@@ -39,6 +39,10 @@ export const updateVoteByCommentId = (comment_id, choice) => {
     return axios.put(`${URL}/comments/${comment_id}?vote=${choice}`)
 }
 
+export const postArticleByTopicSlug = (topic_slug, article) => {
+    return axios.post(`${URL}/topics/${topic_slug}/articles`, article)
+}
+
 //.catch and then invoke an api function that takes to an error page
 //error page with conditional rendering based on err response
 

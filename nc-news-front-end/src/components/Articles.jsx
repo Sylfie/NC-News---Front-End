@@ -1,16 +1,25 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import * as api from '../api'
+import * as api from '../api';
+import PostArticle from './PostArticle';
 
 class Articles extends Component {
     state = {
-        articles: []
+        articles: [],
+        postArticle: false
     }
 
     render() {
         return (
             <div className="articles">
-                {[...this.state.articles].map(article => {
+                <h1>Articles</h1>
+                <Fragment>
+                    <p>Got something interesting to share?</p>
+                    <button onClick={this.togglePostArticle}>Post your own!</button>
+                    <hr />
+                </Fragment>
+                {this.state.postArticle && <PostArticle postArticle={this.state.postArticle} topic_slug={this.props.match.params.topic_slug} />}
+                {!this.state.postArticle && [...this.state.articles].map(article => {
                     return <Fragment key={article._id} item={article}>
                         <h3>{article.title}</h3>
                         <p>{`${article.body.slice(0, 100)}...`}</p>
@@ -46,6 +55,13 @@ class Articles extends Component {
                 })
                 .catch(err => console.log(err))
         }
+    }
+
+    togglePostArticle = () => {
+        console.log('trying to toggle')
+        this.setState({
+            postArticle: true
+        })
     }
 }
 

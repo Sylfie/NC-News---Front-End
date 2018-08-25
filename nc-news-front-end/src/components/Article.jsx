@@ -19,6 +19,7 @@ class Article extends Component {
                         <h3>{this.state.article.title}</h3>
                         <p>{this.state.article.body}</p>
                         <p>Created at: {`${this.state.article.created_at.slice(11, 16)}  ${this.state.article.created_at.slice(8, 10)}-${this.state.article.created_at.slice(5, 7)}-${this.state.article.created_at.slice(0, 4)}`}</p>
+                        <p> Created by: <Link to={`/users/${this.state.article.created_by}`}>{this.state.article.created_by}</Link></p>
                         <div>
                             <button className="vote-up" onClick={() => this.articleVote(this.state.article._id, 'up')}> + </button>
                             {'   '}
