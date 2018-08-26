@@ -55,7 +55,14 @@ class Articles extends Component {
                         articles: res.data.articles
                     })
                 })
-                .catch(err => console.log(err))
+                .catch(err => {
+                    this.setState({
+                        error: {
+                            code: err.response.status,
+                            message: err.response.data.message
+                        }
+                    })
+                })
         } else {
             api.getAllArticles()
                 .then(res => {

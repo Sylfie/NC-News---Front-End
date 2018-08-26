@@ -9,6 +9,7 @@ import Topics from './components/Topics';
 import LogIn from './components/LogIn';
 import Articles from './components/Articles';
 import Error from './components/Error';
+import User from './components/User';
 
 
 class App extends Component {
@@ -40,6 +41,7 @@ class App extends Component {
           <Route exact path="/error" component={Error} />
           <Route path="/articles/:article_id" render={(props) => <Article {...props} activeUser={this.state.activeUser} />} />
           <Route path="/topics/:topic_slug/articles" component={Articles} />
+          <Route path="/users/:username" component={User} />
           <Route exact path="/error" component={Error} />
           {/* <Route path="/*" component={Error} /> */}
 
