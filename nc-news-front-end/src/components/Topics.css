@@ -2,3 +2,7 @@
     background-color: #555;
     color: #eea;
 }
+.topic-item a{
+    display: block;
+    color: rgb(145, 228, 253);
+}

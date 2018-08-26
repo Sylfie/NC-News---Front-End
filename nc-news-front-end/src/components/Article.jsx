@@ -22,16 +22,17 @@ class Article extends Component {
                         <p>{this.state.article.body}</p>
                         <p>Created at: {`${this.state.article.created_at.slice(11, 16)}  ${this.state.article.created_at.slice(8, 10)}-${this.state.article.created_at.slice(5, 7)}-${this.state.article.created_at.slice(0, 4)}`}</p>
                         <p> Created by: <Link to={`/users/${this.state.article.created_by.username}`}>{this.state.article.created_by.username}</Link></p>
-                        <div>
+                        {this.state.activeUser !== this.state.article.created_by._id && <div>
                             {!this.state.articleVote && <button className="vote-up" onClick={() => this.articleVote(this.state.article._id, 'up')}> + </button>}
                             {'   '}
                             {this.state.article.votes}
                             {'   '}
                             {this.state.articleVote && <p>{`Thanks for ${this.state.articleVote}voting!`}</p>}
                             {!this.state.articleVote && <button className="vote-down" onClick={() => this.articleVote(this.state.article._id, 'down')}> - </button>}
-                        </div>
-                        <p>Tagged in: <Link to={`/topics/${this.state.article.belongs_to}/articles`}>{this.state.article.belongs_to}</Link></p>
-                        <p>Comments: WORK IN PROGRESS</p>
+                        </div>}
+                        {this.state.activeUser === this.state.article.created_by._id && <p>votes: {this.state.article.votes}</p>}
+                        <p>tagged in: <Link to={`/topics/${this.state.article.belongs_to}/articles`}>{this.state.article.belongs_to}</Link></p>
+                        <p>comments: {this.state.article.comment_count}</p>
                         <Comments id={this.state.article._id} activeUser={this.state.activeUser} />
                     </Fragment>}
             </div >
@@ -81,3 +82,5 @@ class Article extends Component {
 export default Article;
 
 //optimistic rendering on article votes, Back-end 201 request sent in the background
+
+//stop users from voting on their own article

@@ -8,7 +8,8 @@ class Comments extends Component {
         comments: [],
         commentsActive: false,
         commentDeleted: false,
-        error: {}
+        error: {},
+        votedCommentIndex: -1
     }
     render() {
         return (
@@ -24,16 +25,23 @@ class Comments extends Component {
                                 <div className="comment-user">
                                     <div className="user-details">
                                         <p>posted by: <Link to={`/users/${comment.created_by.username}`}>{comment.created_by.username}</Link></p>
+                                        <img src={comment.created_by.avatar_url} alt={`${comment.created_by.username}'s avatar`} />
                                         <p>posted at: {`${comment.created_at.slice(11, 16)}  ${comment.created_at.slice(8, 10)}-${comment.created_at.slice(5, 7)}-${comment.created_at.slice(0, 4)}`}</p>
                                     </div>
                                     <p>{comment.body}</p>
                                 </div>
                                 {comment.created_by._id !== this.props.activeUser && <div className="comment-body">
-                                    <button className="vote-up" onClick={() => this.commentVote(comment._id, 'up')}> + </button>
-                                    {'   '}
-                                    {comment.votes}
-                                    {'   '}
-                                    <button className="vote-down" onClick={() => this.commentVote(comment._id, 'down')}> - </button>
+                                    {this.state.votedCommentIndex !== this.state.comments.indexOf(comment) ? <Fragment>
+                                        <button className="vote-up" onClick={() => this.commentVote(comment._id, 'up', comment)}> + </button>
+                                        {'   '}
+                                        <span>votes: {comment.votes}</span>
+                                        {'   '}
+                                        <button className="vote-down" onClick={() => this.commentVote(comment._id, 'down', comment)}> - </button>
+                                    </Fragment> :
+                                        <Fragment>
+                                            <p>Thanks for voting!</p>
+                                            <p>votes: {comment.votes}</p>
+                                        </Fragment>}
                                 </div>}
                                 {comment.created_by._id === this.props.activeUser && <button onClick={() => this.deleteComment(comment._id)}>Delete Comment</button>}
                                 <hr />
@@ -45,8 +53,8 @@ class Comments extends Component {
         );
     }
 
-    componentDidUpdate(prevProps) {
-        if ((this.state.commentsActive && this.state.comments.length === 0) || (this.state.commentDeleted && this.state.comments.length !== 0)) {
+    componentDidUpdate(prevProps, prevState) {
+        if ((this.state.commentsActive && this.state.comments.length === 0) || (this.state.commentDeleted && this.state.comments.length !== 0) || (prevState.votedCommentIndex !== this.state.votedCommentIndex && this.state.comments.length !== 0)) {
             this.getCommentsByArticleId(this.props.id)
         };
     }
@@ -79,10 +87,28 @@ class Comments extends Component {
                 })
             })
     }
-    commentVote = (comment_id, choice) => {
+    commentVote = (comment_id, choice, comment) => {
+        let index = this.state.comments.indexOf(comment);
         api.updateVoteByCommentId(comment_id, choice)
-            .then(res => console.log(res.data))
-            .catch(err => err)
+            .then(res => {
+                let vote = comment.votes;
+                choice === 'up' ? vote++ : vote--;
+                let optimisticUpdate = this.state.comments
+                optimisticUpdate[index].votes === res.data.comment.votes
+                this.setState({
+                    ...this.state,
+                    comments: optimisticUpdate,
+                    votedCommentIndex: index
+                })
+            })
+            .catch(err => {
+                this.setState({
+                    error: {
+                        code: err.response.status,
+                        message: err.response.data.message
+                    }
+                })
+            })
     }
 
     activateComments = () => {
