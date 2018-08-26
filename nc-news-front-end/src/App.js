@@ -1,6 +1,6 @@
 //packages
 import React, { Component } from 'react';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 //styles & extra js
 import './App.css';
 //components

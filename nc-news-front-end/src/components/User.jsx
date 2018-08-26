@@ -22,7 +22,7 @@ class User extends Component {
 
     componentDidMount() {
         console.log('mounting user!')
-        this.getUserByUsername('tickle122')
+        this.getUserByUsername(this.props.match.params.username)
     }
 
     getUserByUsername = (username) => {
@@ -41,8 +41,6 @@ class User extends Component {
             })
     }
 }
-
-
 
 export default User;
 
