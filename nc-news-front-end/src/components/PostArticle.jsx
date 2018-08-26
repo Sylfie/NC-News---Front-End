@@ -8,10 +8,11 @@ class postArticle extends Component {
         newArticle: {
             title: "",
             body: "",
-            created_by: "5b64816a0318403e159e7db"
+            created_by: "5b64816a0318403e159e7dbd"
         },
         topic: '',
-        error: {}
+        error: {},
+        sentArticle: false
     }
     render() {
         return (
@@ -43,9 +44,10 @@ class postArticle extends Component {
         );
     }
 
-    // componenetDidMount() {
-    //     console.log('trying to post an article!')
-    // }
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.sentArticle && !this.state.newArticle.title) this.props.updateArticles();
+        // console.log('trying to post an article!')
+    }
 
     handleChange = (event) => {
         this.setState({
@@ -57,7 +59,11 @@ class postArticle extends Component {
     }
 
     checkValidation = () => {
-        return (this.state.newArticle.title && this.state.newArticle.body && this.state.topic) ? true : false;
+        if (this.props.topic_slug) {
+            return (this.state.newArticle.title && this.state.newArticle.body) ? true : false;
+        } else {
+            return (this.state.newArticle.title && this.state.newArticle.body && this.state.topic) ? true : false;
+        }
     }
 
     handleSubmit = (event) => {
@@ -70,7 +76,8 @@ class postArticle extends Component {
                         ...this.state.newArticle,
                         title: '',
                         body: ''
-                    }
+                    },
+                    sentArticle: true
                 })
                 this.props.updateArticles();
             })

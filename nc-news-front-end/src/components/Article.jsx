@@ -63,7 +63,6 @@ class Article extends Component {
     articleVote = (article_id, choice) => {
         api.updateVoteByArticleId(article_id, choice)
             .then(res => {
-                console.log(res.data)
                 let vote = this.state.article.votes;
                 choice === 'up' ? vote++ : vote--;
                 this.setState({

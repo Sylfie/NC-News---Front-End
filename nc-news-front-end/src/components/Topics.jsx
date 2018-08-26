@@ -10,10 +10,10 @@ class Topics extends Component {
     }
     render() {
         return (
-            <div class="topics">
+            <div className="topics">
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
                 {[...this.state.topics].map(topic => {
-                    return <div key={topic.id} className="topic-item"><Link to={`/topics/${topic.slug}/articles`}>{topic.title}</Link></div>
+                    return <div key={topic._id} className="topic-item"><Link to={`/topics/${topic.slug}/articles`}>{topic.title}</Link></div>
                 })}
             </div>
         );
