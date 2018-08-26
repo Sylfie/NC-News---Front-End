@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Error = (props) => {
-    console.log(props)
+    // console.log(props)
     const errorCode = props.location.state.error.code;
     const message = props.location.state.error.message;
     if (errorCode === 400) {

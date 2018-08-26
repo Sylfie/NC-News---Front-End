@@ -7,6 +7,7 @@ class Comments extends Component {
     state = {
         comments: [],
         commentsActive: false,
+        commentDeleted: false,
         error: {}
     }
     render() {
@@ -21,19 +22,20 @@ class Comments extends Component {
                         return (
                             <Fragment key={comment._id}>
                                 <div className="comment-user">
-                                    <p>Created by:<Link to="a">{comment.created_by}</Link></p>
-                                    {/* insert user picture when we get users? + UPDATE -> USER WILL BE OBJ */}
-                                    <p>Created at: {`${comment.created_at.slice(11, 16)}  ${comment.created_at.slice(8, 10)}-${comment.created_at.slice(5, 7)}-${comment.created_at.slice(0, 4)}`}</p>
+                                    <div className="user-details">
+                                        <p>posted by: <Link to={`/users/${comment.created_by.username}`}>{comment.created_by.username}</Link></p>
+                                        <p>posted at: {`${comment.created_at.slice(11, 16)}  ${comment.created_at.slice(8, 10)}-${comment.created_at.slice(5, 7)}-${comment.created_at.slice(0, 4)}`}</p>
+                                    </div>
                                     <p>{comment.body}</p>
                                 </div>
-                                {comment.created_by !== this.props.activeUser && <div className="comment-body">
+                                {comment.created_by._id !== this.props.activeUser && <div className="comment-body">
                                     <button className="vote-up" onClick={() => this.commentVote(comment._id, 'up')}> + </button>
                                     {'   '}
                                     {comment.votes}
                                     {'   '}
                                     <button className="vote-down" onClick={() => this.commentVote(comment._id, 'down')}> - </button>
                                 </div>}
-                                {comment.created_by === this.props.activeUser && <button onClick={() => this.deleteComment(comment._id)}>Delete Comment</button>}
+                                {comment.created_by._id === this.props.activeUser && <button onClick={() => this.deleteComment(comment._id)}>Delete Comment</button>}
                                 <hr />
                             </Fragment>
                         )
@@ -44,7 +46,7 @@ class Comments extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.state.commentsActive && this.state.comments.length === 0) {
+        if ((this.state.commentsActive && this.state.comments.length === 0) || (this.state.commentDeleted && this.state.comments.length !== 0)) {
             this.getCommentsByArticleId(this.props.id)
         };
     }
@@ -54,7 +56,8 @@ class Comments extends Component {
             .then(res => {
                 this.setState({
                     comments: res.data.comments,
-                    commentsActive: true
+                    commentsActive: true,
+                    commentDeleted: false
                 })
             })
     }
@@ -63,7 +66,8 @@ class Comments extends Component {
         api.deleteComment(params)
             .then(res => {
                 this.setState({
-                    ...this.state
+                    ...this.state,
+                    commentDeleted: true
                 })
             })
             .catch(err => {
@@ -83,7 +87,6 @@ class Comments extends Component {
 
     activateComments = () => {
         this.setState({
-            // ...this.state,
             commentsActive: true
         })
     }

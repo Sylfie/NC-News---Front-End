@@ -30,7 +30,8 @@ class PostComment extends Component {
             comment: {
                 ...this.state.comment,
                 body: event.target.value
-            }
+            },
+            readyToPost: true
         })
     }
 
@@ -41,9 +42,10 @@ class PostComment extends Component {
             .then(res => {
                 this.setState({
                     comment: {
-                        ...this.state,
+                        ...this.state.comment,
                         body: ''
-                    }
+                    },
+                    readyToPost: false
                 })
                 this.props.activateComments();
             })
@@ -63,7 +65,8 @@ class PostComment extends Component {
 
 export default PostComment;
 
-//created_by to be changed with checked active user from app
+//post comment rerenders with new comment, posting again doesn't refresh
+
 
 //comment max length to be considered as a feature
 

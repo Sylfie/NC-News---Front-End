@@ -21,7 +21,6 @@ class User extends Component {
     }
 
     componentDidMount() {
-        console.log('mounting user!')
         this.getUserByUsername(this.props.match.params.username)
     }
 
