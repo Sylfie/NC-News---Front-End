@@ -1,13 +1,24 @@
 .App {
   text-align: center;
+  color: #3ecab7;
+  /* color: #91e4fd; */
 }
 
 .App-title {
-  font-size: 1.5em;
-  height: 5vh;
-  background-color: #50475f;
+  font-size: 3em;
+  background-color: #353536;
   margin: 0 auto;
   padding:2.5vh;
+  font-family:  'Ubuntu', sans-serif;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color:#3ecab7;
+}
+
+a:hover {
+  color: #eea;
 }
 
 header {
@@ -32,24 +43,72 @@ nav {
 
 
 .vote-up {
-  background-color: #67e65c;
+  background-color: rgba(35, 102, 87, 0.589);
+}
+
+.vote-up:hover {
+  background-color: rgb(102, 170, 164);
+  color: #000;
 }
 
 .vote-down {
-  background-color: #c06a5f;
+  background-color: rgba(128, 22, 54, 0.589);
+}
+
+.vote-down:hover {
+  background-color: rgb(185, 72, 119);
+  color: #000;
 }
 
 .vote-up, .vote-down {
   min-width: 50px;
   min-height: 25px;
   font-size: 1.2em;
-  border-radius: 15%;
-  border-color: none;
+  border-radius: 15px/20px;
+  border: 1px solid #555;
   margin: auto 1vw;
+  color: #ccc;
 }
 
-.vote-up:hover, .vote-down:hover {
+h1, h3 {
+  font-family: 'Nunito', sans-serif;
+}
+
+p {
+  color: #ddd
+}
+
+textarea {
+  background: #35353642;
+  color: #fff;
+  height: auto;
+  border-radius: 15px;
+}
+
+textarea:focus {
+  border-radius: 15px;
+  outline: none;
+  border:1px solid #eea;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { 
+  text-align: center;  
+}
+
+::-moz-placeholder {  
+  text-align: center;  
+}
+
+:-ms-input-placeholder {  
+  text-align: center; 
+}
+
+button:hover {
   cursor: pointer;
 }
-
 /* rgba not working properly for seected, showing at full alpha when it should be .4 */

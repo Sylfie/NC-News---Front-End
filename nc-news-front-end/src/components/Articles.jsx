@@ -18,18 +18,19 @@ class Articles extends Component {
                 <h1>Articles</h1>
                 <Fragment>
                     <p>Got something interesting to share?</p>
-                    <button onClick={this.togglePostArticle}>Post your own!</button>
-                    <hr />
+                    <button className="post-article-btn" onClick={this.togglePostArticle}>Post your own!</button>
                 </Fragment>
                 {this.state.postArticle && <PostArticle updateArticles={this.updateArticles} topic_slug={this.props.match.params.topic_slug} />}
                 {!this.state.postArticle && [...this.state.articles].map(article => {
-                    return <div key={article._id} item={article}>
+                    return <div className="article" key={article._id} item={article}>
                         <h3>{article.title}</h3>
                         <p>{`${article.body.slice(0, 100)}...`}</p>
-                        <p>Created at: {`${article.created_at.slice(11, 16)}  ${article.created_at.slice(8, 10)}-${article.created_at.slice(5, 7)}-${article.created_at.slice(0, 4)}`}</p>
-                        <p>Tagged in: <Link to={`/topics/${article.belongs_to}/articles`}>{article.belongs_to}</Link></p> {/*links to topics?*/}
-                        <p>Comments: WORK IN PROGRESS</p>
+                        {article.created_by.username && <p>created by: {article.created_by.username}</p>}
+                        <p>created at: {`${article.created_at.slice(11, 16)}  ${article.created_at.slice(8, 10)}-${article.created_at.slice(5, 7)}-${article.created_at.slice(0, 4)}`}</p>
+                        <p>tagged in: <Link to={`/topics/${article.belongs_to}/articles`}>{article.belongs_to}</Link></p> {/*links to topics?*/}
+                        <p>comments: {article.comment_count}</p>
                         <Link to={`/articles/${article._id}`}><button className="seeArticle">See Full Article</button></Link>
+                        <hr />
                     </div>
                 })}
             </div>
@@ -46,7 +47,6 @@ class Articles extends Component {
             this.setState({
                 postedArticle: false
             })
-            console.log('we can update!')
         }
     }
 
@@ -99,5 +99,3 @@ class Articles extends Component {
 }
 
 export default Articles;
-
-//componentDidUpdate is not rerendering the latest posted article, no change is articles arr length after post

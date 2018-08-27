@@ -16,7 +16,7 @@ class PostComment extends Component {
             < div className="post-comment" >
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
                 <form onSubmit={this.handleSubmit}>
-                    <textarea name="post-comment" value={this.state.comment.body} onChange={this.handleChange} placeholder="Put your thoughts in here!"></textarea>
+                    <textarea cols="40" rows="5" name="post-comment" value={this.state.comment.body} onChange={this.handleChange} placeholder="Share what you think!"></textarea>
                     <br />
                     <br />
                     {this.state.comment.body && <button className="submit-comment">Submit</button>}
@@ -68,5 +68,5 @@ export default PostComment;
 //post comment rerenders with new comment, posting again doesn't refresh
 
 
-//comment max length to be considered as a feature
+//comment max length to be considered as a potential feature
 

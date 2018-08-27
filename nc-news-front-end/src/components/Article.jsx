@@ -20,8 +20,8 @@ class Article extends Component {
                     <Fragment>
                         <h3>{this.state.article.title}</h3>
                         <p>{this.state.article.body}</p>
-                        <p>Created at: {`${this.state.article.created_at.slice(11, 16)}  ${this.state.article.created_at.slice(8, 10)}-${this.state.article.created_at.slice(5, 7)}-${this.state.article.created_at.slice(0, 4)}`}</p>
-                        <p> Created by: <Link to={`/users/${this.state.article.created_by.username}`}>{this.state.article.created_by.username}</Link></p>
+                        <p>created at: {`${this.state.article.created_at.slice(11, 16)}  ${this.state.article.created_at.slice(8, 10)}-${this.state.article.created_at.slice(5, 7)}-${this.state.article.created_at.slice(0, 4)}`}</p>
+                        <p> created by: <Link to={`/users/${this.state.article.created_by.username}`}>{this.state.article.created_by.username}</Link></p>
                         {this.state.activeUser !== this.state.article.created_by._id && <div>
                             {!this.state.articleVote && <button className="vote-up" onClick={() => this.articleVote(this.state.article._id, 'up')}> + </button>}
                             {'   '}
@@ -81,5 +81,3 @@ class Article extends Component {
 export default Article;
 
 //optimistic rendering on article votes, Back-end 201 request sent in the background
-
-//stop users from voting on their own article

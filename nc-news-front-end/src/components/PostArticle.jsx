@@ -32,10 +32,11 @@ class postArticle extends Component {
                         <br />
                         <br />
                     </Fragment>
+                    <label htmlFor="name">title:   </label>
                     <input type="text" name="title" value={this.state.newArticle.title} onChange={this.handleChange} />
                     <br />
                     <br />
-                    <textarea name="body" value={this.state.newArticle.body} onChange={this.handleChange} placeholder="Put your thoughts in here!"></textarea>
+                    <textarea cols="50" rows="40" name="body" value={this.state.newArticle.body} onChange={this.handleChange} placeholder="Put your thoughts in here!"></textarea>
                     <br />
                     <br />
                     <button disabled={!this.checkValidation()} className="submit-article">Post article</button>
@@ -102,10 +103,9 @@ class postArticle extends Component {
 export default postArticle;
 
 
-//successful post, not updating articles when a post is made
 
  //upon submitting select should go back to default
 
 
- //existing topics are hardcoded, future feature to get all topic slugs as request 
+ //existing topics in select are hardcoded, future feature to get all topic slugs as request 
 
