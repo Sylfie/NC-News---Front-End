@@ -7,6 +7,7 @@ class Articles extends Component {
     state = {
         articles: [],
         postArticle: false,
+        postedArticle: false,
         error: {}
     }
 
@@ -40,10 +41,12 @@ class Articles extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.postArticle && this.state.articles.length === prevState.articles.length) {
-            // this.setState({
-            //     postArticle: false
-            // })
+        if (this.state.postedArticle && this.state.articles.length === prevState.articles.length) {
+            this.getArticles(this.props.match.params.topic_slug)
+            this.setState({
+                postedArticle: false
+            })
+            console.log('we can update!')
         }
     }
 
@@ -89,7 +92,8 @@ class Articles extends Component {
 
     updateArticles = () => {
         this.setState({
-            postArticle: false
+            postArticle: false,
+            postedArticle: true
         })
     }
 }
