@@ -16,7 +16,6 @@ class PostArticle extends Component {
         sentArticle: false
     }
     render() {
-        console.log(this.props)
         return (
             <div className="post-article">
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
@@ -33,7 +32,7 @@ class PostArticle extends Component {
                         <br />
                         <br />
                     </Fragment>
-                    <input type="text" name="title" value={this.state.newArticle.title} onChange={this.handleChange} />
+                    <input type="text" name="title" value={this.state.newArticle.title} onChange={this.handleChange} placeholder="Select a title" />
                     <br />
                     <br />
                     <textarea cols="50" rows="40" name="body" value={this.state.newArticle.body} onChange={this.handleChange} placeholder="Put your thoughts in here!"></textarea>
@@ -109,7 +108,4 @@ export default PostArticle;
 
 
  //upon submitting select should go back to default
-
-
- //existing topics in select are hardcoded, future feature to get all topic slugs as request 
 

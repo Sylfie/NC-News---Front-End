@@ -6,11 +6,6 @@ class Navbar extends Component {
     render() {
         return (
             <div className="navbar">
-                {/* <nav className="nav">
-                    <NavLink to="/" activeClassName="selected">Home</NavLink>
-                    <NavLink to="/topics" activeClassName="selected">Topics</NavLink>
-                    <NavLink to="/articles" activeClassName="selected">Articles</NavLink>
-                </nav> */}
                 <nav className="nav">
                     <div className="nav-wrapper">
                         <a href="/" className="brand-logo">Northcoders News </a>

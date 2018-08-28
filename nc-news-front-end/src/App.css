@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   color: #3ecab7;
-  /* color: #91e4fd; */
 }
 
 .App-title {
@@ -21,26 +20,12 @@ a:hover {
   color: #eea;
 }
 
-/* header {
-  background-color: #426694;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-} */
-
-/* nav {
-  padding: 5vh 2vw;
-  background-color: #555;
-  color: #eea;
-  height: 75vh; 
-} */
 .nav {
   background-color: #000;
 }
 
 .selected{
-  background-color: rgba(168, 75, 103, 0.815);
+  background-color: #153531;
   color: #eea;
 }
 
@@ -82,22 +67,46 @@ p {
 }
 
 textarea {
-  background: #35353642;
+  background: #353536;
   color: #ccc;
   height: auto;
   border-radius: 15px;
 }
 
-input {
-  color: #ccc;
-}
-
 textarea:focus {
   border-radius: 15px;
   outline: none;
-  border:1px solid #eea;
+  border:1px solid #ccc;
   box-shadow: 0 0 10px #719ECE;
 }
+
+input {
+  color: #ccc;
+  border: 1px solid #ccc;
+}
+
+input:focus {
+  border: 1px solid #ccc;
+}
+
+select {
+  display: block;
+  background:  #353536;
+  color: #ccc;
+  /* border:1px solid #ccc; */
+  border-radius: 15px;
+  text-align: center;
+}
+
+select option:hover{
+  color: #000; 
+  background-color: #3ecab7;
+}
+
+select:focus {
+  box-shadow: 0 0 10px #719ECE;
+}
+
 
 ::-webkit-input-placeholder {
   text-align: center;
@@ -129,3 +138,4 @@ button:hover {
 img {
   width: 5vw;
 }
+

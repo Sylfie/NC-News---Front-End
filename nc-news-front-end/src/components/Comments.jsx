@@ -13,6 +13,7 @@ class Comments extends Component {
         votedCommentIndex: -1
     }
     render() {
+        console.log(this.props)
         return (
             <div>
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
