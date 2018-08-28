@@ -19,7 +19,7 @@ Run 'npm start' in your CLI. This should automatically create a live server at p
 
 ## Deployment
 
-You can find a deployed version of the project [here](https://ncnewsbend.herokuapp.com/api). CHANGE ME!
+You can find a deployed version of the project [here](https://mystifying-minsky-b30e25.netlify.com).
 
 ## Built With
 
