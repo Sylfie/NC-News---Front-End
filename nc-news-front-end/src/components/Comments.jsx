@@ -18,7 +18,7 @@ class Comments extends Component {
             <div>
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
                 <PostComment id={this.props.id} activateComments={this.activateComments} />
-                {!this.state.commentsActive && <Link to={`/articles/${this.props.id}/comments`}><button className="seeComments btn"
+                {!this.state.commentsActive && <Link to={`/articles/${this.props.id}/comments`}><button className="see-comments btn"
                     onClick={this.activateComments}>See Comments</button></Link>}
                 {this.state.comments.length > 0 && <div className="comments">
                     {[...this.state.comments].map(comment => {
@@ -45,7 +45,7 @@ class Comments extends Component {
                                             <p>votes: {comment.votes}</p>
                                         </Fragment>}
                                 </div>}
-                                {comment.created_by._id === this.props.activeUser && <button onClick={() => this.deleteComment(comment._id)}>Delete Comment</button>}
+                                {comment.created_by._id === this.props.activeUser && <button className="btn" onClick={() => this.deleteComment(comment._id)}>Delete Comment</button>}
                                 <hr />
                             </Fragment>
                         )

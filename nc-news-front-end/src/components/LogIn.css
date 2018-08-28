@@ -1,5 +1,12 @@
 .log-in{
     padding: 2.5vh 5px;
-    background-color: #84c48e;
-    height: 15vh;
+    background-color: #353536;
+}
+
+.log-in p {
+    font-size: 1.5em;
+}
+
+.log-in img {
+    width: 100px;
 }

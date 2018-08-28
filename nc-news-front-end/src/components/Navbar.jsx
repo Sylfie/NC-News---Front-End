@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import LogIn from './LogIn';
 
 class Navbar extends Component {
@@ -8,7 +9,7 @@ class Navbar extends Component {
             <div className="navbar">
                 <nav className="nav">
                     <div className="nav-wrapper">
-                        <a href="/" className="brand-logo">Northcoders News </a>
+                        <a href="/" className="brand-logo center">Northcoders News </a>
                         <a data-target="menu" className="sidenav-trigger show-on-large">
                             <i className="fa fa-bars"></i>
                         </a>
@@ -17,7 +18,7 @@ class Navbar extends Component {
                             <li><NavLink to="/articles" activeClassName="selected">Articles</NavLink></li>
                         </ul>
                         <ul className="sidenav" id="menu">
-                            <li><LogIn /></li>
+                            <li><LogIn activeUser={this.props.activeUser} /></li>
                             <li><NavLink to="/topics" activeClassName="selected">Topics</NavLink></li>
                             <li><NavLink to="/articles" activeClassName="selected">Articles</NavLink></li>
                         </ul>
@@ -27,5 +28,9 @@ class Navbar extends Component {
         );
     }
 }
+
+LogIn.propTypes = {
+    activeUser: PropTypes.string.isRequired
+};
 
 export default Navbar;

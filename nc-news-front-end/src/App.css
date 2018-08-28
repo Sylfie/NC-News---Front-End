@@ -51,7 +51,7 @@ a:hover {
 .vote-up, .vote-down {
   min-width: 50px;
   min-height: 25px;
-  font-size: 1.2em;
+  /* font-size: 1.2em; */
   border-radius: 15px/20px;
   border: 1px solid #555;
   margin: auto 1vw;
@@ -71,6 +71,7 @@ textarea {
   color: #ccc;
   height: auto;
   border-radius: 15px;
+  max-height: 35vh;
 }
 
 textarea:focus {
@@ -139,3 +140,18 @@ img {
   width: 5vw;
 }
 
+.sidenav {
+  background-color: #000;
+}
+
+.sidenav li>a {
+  color: #eea;
+}
+
+
+.see-comments {
+  margin-top: 2vh;
+}
+
+
+/* Materialize and separate component css files are not on good terms, I had to push some of the things to  App.css to make things work, will be investigating further why it happens so with react rendering*/

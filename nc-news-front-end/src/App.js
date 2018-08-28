@@ -20,25 +20,23 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Navbar />
+          <Navbar activeUser={this.state.activeUser} />
         </header>
         <main className="main-container">
-          {/* <h1 className="App-title">Northcoders News Messenger</h1> */}
           <Route exact path="/" render={() => <div className="home"><h1>Welcome to NC News!</h1><h3>Want to know what's going on? Have a browse in our topics or articles :)</h3></div>} />
           <Route exact path="/topics" component={Topics} />
           <Route exact path="/articles" component={Articles} />
-          <Route exact path="/error" component={Errors} />
           <Route path="/articles/:article_id" render={(props) => <Article {...props} activeUser={this.state.activeUser} />} />
           <Route path="/topics/:topic_slug/articles" component={Articles} />
           <Route path="/users/:username" component={User} />
+          <Route exact path="/error" component={Errors} />
         </main>
       </div>
     );
   }
   componentDidMount = () => {
-    console.log('App js angry birds')
+    console.log('App mounted')
   };
 }
-
 
 export default App;

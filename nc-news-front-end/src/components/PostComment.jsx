@@ -20,7 +20,7 @@ class PostComment extends Component {
                     <textarea cols="35" rows="5" name="post-comment" value={this.state.comment.body} onChange={this.handleChange} placeholder="Share what you think!"></textarea>
                     <br />
                     <br />
-                    {this.state.comment.body && <button className="submit-comment">Submit</button>}
+                    {this.state.comment.body && <button className="submit-comment btn">Submit</button>}
                 </form>
             </div >
         );

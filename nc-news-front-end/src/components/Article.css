@@ -1,5 +1,4 @@
 .article {
-    /* background-color: #1f1f20 */
     color: #eea;
     padding: 0 10vw;
     width: 100%;
@@ -9,7 +8,6 @@
 .seeArticle{
     min-width: 50px;
     min-height: 25px;
-    border-radius: 7%;
     margin-bottom: 2vh;
 }
 

@@ -23,7 +23,10 @@
 
 .topic-item:hover {
     background-color: #555;
-    /* color: #91e4fd; */
-    color: pink;
+    box-shadow: 0 0 10px #719ECE;
     opacity: 1;
+}
+
+.topic-item a {
+    font-size: 2em;
 }
