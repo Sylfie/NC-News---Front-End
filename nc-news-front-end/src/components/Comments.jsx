@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as api from '../api';
 import PostComment from './PostComment';
 
@@ -15,8 +16,8 @@ class Comments extends Component {
         return (
             <div>
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
-                <PostComment id={this.props.id} updateComments={this.updateComments} activateComments={this.activateComments} />
-                {!this.state.commentsActive && <Link to={`/articles/${this.props.id}/comments`}><button className="seeComments"
+                <PostComment id={this.props.id} activateComments={this.activateComments} />
+                {!this.state.commentsActive && <Link to={`/articles/${this.props.id}/comments`}><button className="seeComments btn"
                     onClick={this.activateComments}>See Comments</button></Link>}
                 {this.state.comments.length > 0 && <div className="comments">
                     {[...this.state.comments].map(comment => {
@@ -117,6 +118,11 @@ class Comments extends Component {
         })
     }
 }
+
+Comments.propTypes = {
+    id: PropTypes.string.isRequired,
+    activeUser: PropTypes.string.isRequired
+};
 
 
 //deleted comment to disappear

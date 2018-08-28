@@ -2,8 +2,8 @@
     /* background-color: #1f1f20 */
     color: #eea;
     padding: 0 10vw;
-    width: 80%;
-    float: right;
+    width: 100%;
+
 }
 
 .seeArticle{
@@ -21,3 +21,4 @@
 .post-article-btn {
     margin-bottom: 2vh;
 }
+

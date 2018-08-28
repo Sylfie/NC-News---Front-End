@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 //styles & extra js
 import './App.css';
 //components
-import Header from './components/Header';
+import Navbar from './components/Navbar';
 import Article from './components/Article';
 import Topics from './components/Topics';
 import Articles from './components/Articles';
@@ -19,9 +19,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Header /> */}
-        <main>
-          <h1 className="App-title">Northcoders News Messenger</h1>
+        <header className="App-header">
+          <Navbar />
+        </header>
+        <main className="main-container">
+          {/* <h1 className="App-title">Northcoders News Messenger</h1> */}
           <Route exact path="/" render={() => <div className="home"><h1>Welcome to NC News!</h1><h3>Want to know what's going on? Have a browse in our topics or articles :)</h3></div>} />
           <Route exact path="/topics" component={Topics} />
           <Route exact path="/articles" component={Articles} />

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as api from '../api';
 
 class User extends Component {
@@ -40,6 +41,12 @@ class User extends Component {
             })
     }
 }
+
+User.propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+};
 
 export default User;
 

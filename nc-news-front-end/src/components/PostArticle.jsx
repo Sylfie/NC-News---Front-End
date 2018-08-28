@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import * as api from '../api';
 
 
-class postArticle extends Component {
+class PostArticle extends Component {
     state = {
         newArticle: {
             title: "",
@@ -15,31 +16,30 @@ class postArticle extends Component {
         sentArticle: false
     }
     render() {
+        console.log(this.props)
         return (
             <div className="post-article">
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
                 <form onSubmit={this.handleSubmit}>
                     <Fragment>
-                        <label>
-                            Topic: {' '}
-                            {this.props.topic_slug ? <span>{this.props.topic_slug}</span> : <select onChange={this.handleOptions}>
-                                <option value="" defaultValue>Choose a topic</option>
-                                <option value="coding">Coding</option>
-                                <option value="football">Football</option>
-                                <option value="cooking">Cooking</option>
-                            </select>}
-                        </label>
+                        <p>Topic:</p>
+                        {this.props.topic_slug && <span>{this.props.topic_slug}</span>}
+                        {this.props.topic_slug === undefined && <select onChange={this.handleOptions}>
+                            <option value="" defaultValue>Choose a topic</option>
+                            <option value="coding">Coding</option>
+                            <option value="football">Football</option>
+                            <option value="cooking">Cooking</option>
+                        </select>}
                         <br />
                         <br />
                     </Fragment>
-                    <label htmlFor="name">title:   </label>
                     <input type="text" name="title" value={this.state.newArticle.title} onChange={this.handleChange} />
                     <br />
                     <br />
                     <textarea cols="50" rows="40" name="body" value={this.state.newArticle.body} onChange={this.handleChange} placeholder="Put your thoughts in here!"></textarea>
                     <br />
                     <br />
-                    <button disabled={!this.checkValidation()} className="submit-article">Post article</button>
+                    <button disabled={!this.checkValidation()} className="submit-article btn">Post article</button>
                 </form>
             </div>
         );
@@ -100,8 +100,12 @@ class postArticle extends Component {
     }
 }
 
-export default postArticle;
+PostArticle.propTypes = {
+    updateArticles: PropTypes.func.isRequired,
+    topic_slug: PropTypes.strting
+};
 
+export default PostArticle;
 
 
  //upon submitting select should go back to default

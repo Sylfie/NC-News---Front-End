@@ -21,19 +21,22 @@ a:hover {
   color: #eea;
 }
 
-header {
+/* header {
   background-color: #426694;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-}
+} */
 
-nav {
+/* nav {
   padding: 5vh 2vw;
   background-color: #555;
   color: #eea;
   height: 75vh; 
+} */
+.nav {
+  background-color: #000;
 }
 
 .selected{
@@ -80,9 +83,13 @@ p {
 
 textarea {
   background: #35353642;
-  color: #fff;
+  color: #ccc;
   height: auto;
   border-radius: 15px;
+}
+
+input {
+  color: #ccc;
 }
 
 textarea:focus {
@@ -112,3 +119,13 @@ button:hover {
   cursor: pointer;
 }
 /* rgba not working properly for seected, showing at full alpha when it should be .4 */
+
+.post-article {
+  width: 80%;
+  height: 50vh;
+  margin: auto;
+}
+
+img {
+  width: 5vw;
+}

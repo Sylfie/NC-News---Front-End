@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Error = (props) => {
     const errorCode = props.location.state.error.code;
@@ -10,6 +11,12 @@ const Error = (props) => {
             <h3>({props.location.state.error.message})</h3>
         </div >
     );
+};
+
+Error.propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
 };
 
 export default Error;

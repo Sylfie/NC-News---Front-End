@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as api from '../api';
 import './Topics.css';
 
@@ -39,7 +40,10 @@ class Topics extends Component {
     }
 }
 
-
-
+Topics.propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+};
 
 export default Topics;

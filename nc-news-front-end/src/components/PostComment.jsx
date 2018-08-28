@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import * as api from '../api';
 
@@ -16,7 +17,7 @@ class PostComment extends Component {
             < div className="post-comment" >
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
                 <form onSubmit={this.handleSubmit}>
-                    <textarea cols="40" rows="5" name="post-comment" value={this.state.comment.body} onChange={this.handleChange} placeholder="Share what you think!"></textarea>
+                    <textarea cols="35" rows="5" name="post-comment" value={this.state.comment.body} onChange={this.handleChange} placeholder="Share what you think!"></textarea>
                     <br />
                     <br />
                     {this.state.comment.body && <button className="submit-comment">Submit</button>}
@@ -59,8 +60,12 @@ class PostComment extends Component {
             })
     }
 
-
 }
+
+PostComment.propTypes = {
+    id: PropTypes.string.isRequired,
+    activateComments: PropTypes.func.isRequired
+};
 
 
 export default PostComment;

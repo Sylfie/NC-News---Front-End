@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as api from '../api';
 import Comments from './Comments';
 import './Article.css';
@@ -13,6 +14,7 @@ class Article extends Component {
     }
 
     render() {
+
         return (
             < div className="article" >
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
@@ -77,6 +79,13 @@ class Article extends Component {
 
     }
 }
+
+Article.propTypes = {
+    activeUser: PropTypes.string.isRequired,
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+};
 
 export default Article;
 
