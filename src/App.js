@@ -34,9 +34,6 @@ class App extends Component {
       </div>
     );
   }
-  componentDidMount = () => {
-    console.log('App mounted')
-  };
 }
 
 export default App;

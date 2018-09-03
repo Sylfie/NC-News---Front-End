@@ -145,9 +145,23 @@ img {
 }
 
 .sidenav li>a {
-  color: #eea;
+  color: #3ecab7;
+  margin-top: 5vh;
+  font-size: 1.5em;
 }
 
+.sidenav li>a:hover {
+  color: #eea;
+  background: #153531;
+}
+
+.sidenav-trigger {
+  color: #3ecab7;
+}
+
+.sidenav-trigger:hover {
+  cursor: pointer;
+}
 
 .see-comments {
   margin-top: 2vh;

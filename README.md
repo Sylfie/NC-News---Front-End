@@ -1,12 +1,12 @@
 # Project 'Northcoders News'
 
-Multistage full-stack project, this is Part 2 which deals with Front-end side of the app. For Back-end/Part1, please visit [this page](https://github.com/Sylfie/BE-FT-northcoders-news). The website has been designed to fetch or update data from the back-end side; the project has been built with React and uses Materialize/Flexbox for styling.
+Multistage full-stack project, this is Part 2 which deals with Front-end side of the app. For Back-end/Part1, please visit [this page](https://github.com/Sylfie/BE-FT-northcoders-news). The project has been built with React and uses Materialize/Flexbox for styling.
 
 ## Getting Started
 
 1. Fork and clone this repo to your own machine.
 
-2. Run 'npm install' in your CLI to fetch all modules.
+2. Run 'npm install' in your terminal to fetch all modules.
 
 ### Prerequisites 
 
@@ -14,7 +14,7 @@ Please ensure you are using version 10+ of Node.js and 6+ of npm to avoid versio
 
 ## Running a development server
 
-Run 'npm start' in your CLI. This should automatically create a live server at port 3000 for a preview of the project. 
+Run 'npm start' in your terminal. This will start a live server at port 3000 for a preview of the project. 
 
 
 ## Deployment
