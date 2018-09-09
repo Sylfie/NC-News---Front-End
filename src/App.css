@@ -24,7 +24,7 @@ a:hover {
   background-color: #000;
 }
 
-.selected{
+.selected:hover{
   background-color: #153531;
   color: #eea;
 }
@@ -137,7 +137,7 @@ button:hover {
 }
 
 img {
-  width: 5vw;
+  width: 10vw;
 }
 
 .sidenav {
@@ -167,5 +167,66 @@ img {
   margin-top: 2vh;
 }
 
+.comment-body, .comments > .btn {
+  margin-bottom: 2vh;
+}
+
+.home, .topics {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 10vh 2.5vh;
+}
+
+.home-item, .topic-item {
+  margin-top: 5vh;
+  min-width: 15vw;
+  height: 10vh;
+  border: 2px solid #3ecab7;;
+  margin: auto 1.25vw;
+  border-radius: 15px/45px;
+  align-content: center;
+  opacity: 0.5;
+  transition: 0.6s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-item:hover, .topic-item:hover {
+  background-color: #555;
+  box-shadow: 0 0 10px #719ECE;
+  opacity: 1;
+}
+
+.home-item p, .topic-item p {
+  font-size: 2em;
+  color: #3ecab7;
+  padding: 5%;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  img {
+    width: 20vw;
+  }
+  nav .brand-logo{
+    font-size: 1.5em;
+  }
+  h1{
+    font-size: 3em;
+  } 
+  h3{
+    font-size: 2em;
+  }
+  .home, .topics {
+    flex-direction: column;
+    margin: 10vh auto;
+  }
+  .home-item, .topic-item {
+    margin: 2.5vh auto;
+  } 
+}
 
 /* Materialize and separate component css files are not on good terms, I had to push some of the things to  App.css to make things work, will be investigating further why it happens so with react rendering*/

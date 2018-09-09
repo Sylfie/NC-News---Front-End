@@ -16,7 +16,7 @@ class Articles extends Component {
         return (
             <div className="articles">
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
-                <h1>Articles</h1>
+                {this.props.match.params.topic_slug !== undefined ? <h1>{this.props.match.params.topic_slug[0].toUpperCase() + this.props.match.params.topic_slug.slice(1)} Articles</h1> : <h1>Articles</h1>}
                 <Fragment>
                     <p>Got something interesting to share?</p>
                     <button className="post-article-btn waves-effect waves-light btn" onClick={this.togglePostArticle}>Post your own!</button>
@@ -25,7 +25,7 @@ class Articles extends Component {
                 <Fragment>
                     {!this.state.postArticle && [...this.state.articles].map(article => {
                         return <div className="article" key={article._id} item={article}>
-                            <h3>{article.title}</h3>
+                            <Link to={`/articles/${article._id}`}><h3>{article.title}</h3></Link>
                             <p>{`${article.body.slice(0, 100)}...`}</p>
                             {article.created_by.username && <p>created by: {article.created_by.username}</p>}
                             <p>created at: {`${article.created_at.slice(11, 16)}  ${article.created_at.slice(8, 10)}-${article.created_at.slice(5, 7)}-${article.created_at.slice(0, 4)}`}</p>

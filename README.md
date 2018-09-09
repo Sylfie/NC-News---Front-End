@@ -39,9 +39,9 @@ You can find a deployed version of the project [here](https://mystifying-minsky-
 
 ## Future Feature Ideas
 
-* Implement user login/logout functionality with imput validation and server authentication. 
+* Implement user login/logout functionality with input validation and server authentication. 
 
-* Offer 'onScroll' or pagination for articles and comments if they are more than a certain number (e.g. 25+).
+* Offer 'onScroll' or pagination for articles and comments if they are more than a certain number (e.g. 25+). Posting an article or comment will have page focus on newly posted item;
 
 * Existing topics in PostArticle's 'select' element are hardcoded, get all topics as a request.
 

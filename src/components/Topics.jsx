@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as api from '../api';
-import './Topics.css';
 
 class Topics extends Component {
     state = {
@@ -12,9 +11,10 @@ class Topics extends Component {
     render() {
         return (
             <div className="topics">
+                <h1>Topics</h1>
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
                 {[...this.state.topics].map(topic => {
-                    return <div key={topic._id} className="topic-item"><Link to={`/topics/${topic.slug}/articles`}>{topic.title}</Link></div>
+                    return <Fragment key={topic._id}><Link to={`/topics/${topic.slug}/articles`}><div className="topic-item"><p>{topic.title}</p></div></Link></Fragment>
                 })}
             </div>
         );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LogIn from './LogIn';
 
@@ -9,18 +9,18 @@ class Navbar extends Component {
             <div className="navbar">
                 <nav className="nav">
                     <div className="nav-wrapper">
-                        <a href="/" className="brand-logo center">Northcoders News </a>
-                        <a data-target="menu" className="sidenav-trigger show-on-large">
+                        <Link to="/" className="brand-logo center">Northcoders News </Link>
+                        <Link to="#" data-target="menu" className="sidenav-trigger show-on-large">
                             <i className="fa fa-bars"></i>
-                        </a>
+                        </Link>
                         <ul className="right hide-on-small-only">
-                            <li><NavLink to="/topics" activeClassName="selected">Topics</NavLink></li>
-                            <li><NavLink to="/articles" activeClassName="selected">Articles</NavLink></li>
+                            <li><Link to="/topics" className="selected">Topics</Link></li>
+                            <li><Link to="/articles" className="selected">Articles</Link></li>
                         </ul>
                         <ul className="sidenav" id="menu">
                             <li><LogIn activeUser={this.props.activeUser} /></li>
-                            <li><NavLink to="/topics" activeClassName="selected">Topics</NavLink></li>
-                            <li><NavLink to="/articles" activeClassName="selected">Articles</NavLink></li>
+                            <li><Link to="/topics" className="selected">Topics</Link></li>
+                            <li><Link to="/articles" className="selected">Articles</Link></li>
                         </ul>
                     </div>
                 </nav>

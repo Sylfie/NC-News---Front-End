@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 //styles & extra js
 import './App.css';
 //components
+import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Article from './components/Article';
 import Topics from './components/Topics';
@@ -23,17 +24,18 @@ class App extends Component {
           <Navbar activeUser={this.state.activeUser} />
         </header>
         <main className="main-container">
-          <Route exact path="/" render={() => <div className="home"><h1>Welcome to NC News!</h1><h3>Want to know what's going on? Have a browse in our topics or articles :)</h3></div>} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/topics" component={Topics} />
           <Route exact path="/articles" component={Articles} />
           <Route path="/articles/:article_id" render={(props) => <Article {...props} activeUser={this.state.activeUser} />} />
           <Route path="/topics/:topic_slug/articles" component={Articles} />
           <Route path="/users/:username" component={User} />
           <Route exact path="/error" component={Errors} />
+          {/* <Route path="/*" component={Errors} /> */}
         </main>
       </div>
-    );
-  }
+    )
+  };
 }
 
 export default App;

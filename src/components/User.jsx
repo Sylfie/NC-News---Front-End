@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as api from '../api';
+import "./User.css"
 
 class User extends Component {
     state = {
@@ -13,8 +14,8 @@ class User extends Component {
             <div className="user">
                 {this.state.error.code && <Redirect to={{ pathname: "/error", state: { error: this.state.error } }} />}
                 {this.state.user._id && <Fragment>
-                    <p>Username: {this.state.user.username}</p>
-                    <p>Name: {this.state.user.name}</p>
+                    <p>username: {this.state.user.username}</p>
+                    <p>name: {this.state.user.name}</p>
                     <img src={this.state.user.avatar_url} alt="user avatar" />
                 </Fragment>}
             </div>
