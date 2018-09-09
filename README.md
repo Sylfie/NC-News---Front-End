@@ -37,6 +37,12 @@ You can find a deployed version of the project [here](https://mystifying-minsky-
 * react-router-dom: v4.3.1+,
 * react-scripts: v1.1.4
 
+##Notes on Functionality
+
+* Voting buttons on articles and comments are only available if the current user is not the author of the text. 
+
+* Logged in user can delete their comments.
+
 ## Future Feature Ideas
 
 * Implement user login/logout functionality with input validation and server authentication. 
